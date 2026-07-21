@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>AVARIADA PROJECT</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <div class="bg-system" aria-hidden="true">
-  <div class="bg-layer bg-layer-1 is-active"></div>
-  <div class="bg-layer bg-layer-2"></div>
-  <div class="bg-layer bg-layer-3"></div>
-  <div class="bg-overlay"></div>
-  <div class="bg-vignette"></div>
-  <div class="bg-noise"></div>
-</div>
 
 <header class="site-header">
-  <div class="container header-inner">
-    <a href="#top" class="brand" data-i18n="brand">###2026///avariada@gmail.com</a>
-
-    <nav class="nav" aria-label="Principal">
-      <div class="nav-links">
-        <a class="nav-link" href="#top" data-i18n="navHome">Inici</a>
-        <a class="nav-link" href="#work" data-i18n="navWork">Hub</a>
-        <a class="nav-link" href="#contact" data-i18n="navContact">Contacte</a>
+  <div class="header-strip">
+    <div class="symbol-box" aria-hidden="true">
+      <span id="headerSymbol" class="symbol-box__char">#</span>
+    </div>
+    <div class="container header-inner">
+      <div class="header-left">
+        <a href="../../index.html" class="brand">
+          <span>underexposed</span>
+        </a>
       </div>
-
-      <div class="lang-switch" aria-label="Selector d'idioma">
-        <button class="lang-btn is-active" type="button" data-lang="ca">CAT</button>
-        <button class="lang-btn" type="button" data-lang="en">EN</button>
+      <div class="header-right">
+        <div class="lang-toggle">
+          <button type="button" id="languageToggle" class="lang-toggle__button" aria-label="Canviar idioma a English">
+            <span class="lang-toggle__code is-active" data-lang-indicator="ca">CA</span>
+            <span class="lang-toggle__divider">/</span>
+            <span class="lang-toggle__code" data-lang-indicator="en">EN</span>
+          </button>
+        </div>
       </div>
-    </nav>
+    </div>
   </div>
 </header>
 
 <main>
-  <section class="hero" id="top" data-bg="1">
+  <section class="hero" id="top">
+    <div class="bg-system" aria-hidden="true">
+      <div class="bg-layer bg-layer-1 is-active"></div>
+      <div class="bg-overlay"></div>
+      <div class="bg-vignette"></div>
+      <div class="bg-noise"></div>
+    </div>
     <div class="hero-shell">
       <div class="hero-grid">
         <div class="hero-inner fade-in">
@@ -47,93 +39,28 @@
             <span data-i18n="warningSub">Disculpeu el portfolio</span>
           </div>
 
-          <p class="hero-text" data-i18n="heroText">
-            Hub principal de la marca personal. Fotografia i videografia, disseny gràfic,
-            interiors, arquitectura i altres línies de treball que conviuen dins d’un mateix arxiu.
+          <p class="hero-text" data-i18n="projectText">
+            Una col·lecció de fotografies de diferents ciutats unides per la bellesa dels vidres trencats. Ja sigui en espais públics o privats, les formes caleidoscòpiques ens recorden a una teranyina d'aranya, i com si fóssim nosaltres l'insecte, ens atrapen captivats per la seva forma i patrons.
           </p>
-
-          <div class="hub-list" id="work" aria-label="Hub list">
-            <div class="hub-row">
-              <span>01</span>
-              <span data-i18n="hub1">Photography / Videography</span>
-              <span data-i18n="hub1Type">Image</span>
-            </div>
-
-            <div class="hub-row">
-              <span>02</span>
-              <span data-i18n="hub2">Graphic Design</span>
-              <span data-i18n="hub2Type">Print / Identity</span>
-            </div>
-
-            <div class="hub-row">
-              <span>03</span>
-              <span data-i18n="hub3">Interior / Architecture</span>
-              <span data-i18n="hub3Type">Space</span>
-            </div>
-
-            <div class="hub-row">
-              <span>04</span>
-              <span data-i18n="hub4">Archive / Ongoing</span>
-              <span data-i18n="hub4Type">Research</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="disciplines" data-bg="2">
-    <div class="section-shell">
-      <div class="section-grid">
-        <div class="section-inner fade-in">
-          <h2 class="section-title" data-i18n="disciplinesTitle">One site, several ways of working.</h2>
-
-          <p class="section-copy" data-i18n="disciplinesCopy">
-            La web funciona com a entrada principal. Des d’aquí podem després obrir categories,
-            projectes concrets o pàgines específiques segons a qui l’ensenyes.
-          </p>
-
-          <div class="micro-list">
-            <div class="micro-row">
-              <span data-i18n="discList1a">Mode</span>
-              <span data-i18n="discList1b">Single hub / multiple outputs</span>
-              <span></span>
-            </div>
-
-            <div class="micro-row">
-              <span data-i18n="discList2a">Structure</span>
-              <span data-i18n="discList2b">Selected work / categories / archive</span>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section class="project-gallery" id="gallery" aria-label="Fotografies del projecte">
+    <div class="gallery-shell">
+      <figure class="project-photo"><img src="assets/images/DSC01134.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC01272.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC01683.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC01910.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC04318.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC04323.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC04774.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/DSC05061.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/IMG_4800.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/IMG_4831.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/IMG_5936.JPG" alt="Avariada — fotografia" loading="lazy"></figure>
+      <figure class="project-photo"><img src="assets/images/WhatsApp%20Image%202026-07-21%20at%2012.55.10.jpeg" alt="Avariada — fotografia" loading="lazy"></figure>
     </div>
   </section>
-
-  <section class="section" id="contact" data-bg="3">
-    <div class="section-shell">
-      <div class="section-grid">
-        <div class="section-inner fade-in">
-          <h2 class="section-title" data-i18n="contactTitle">Selected collaborations, commissions and conversations.</h2>
-
-          <p class="section-copy" data-i18n="contactCopy">
-            Aquesta és una estructura inicial. Després hi podem afegir més seccions i més fotografies
-            al carrusel de fons a mesura que vagis publicant material.
-          </p>
-
-          <div class="contact-links">
-            <a href="#" data-i18n="contactLink1">Instagram</a>
-            <a href="#" data-i18n="contactLink2">Email</a>
-            <a href="#" data-i18n="contactLink3">GitHub</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-    <script  src="./script.js"></script>
-
-  </body>
-  
-</html>
+</
