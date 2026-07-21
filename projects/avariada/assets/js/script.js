@@ -2,11 +2,11 @@
 const translations = {
   ca: {
     warningMain: "AVARIADA",
-    warningSub: "Disculpeu el portfolio",
+    warningSub: "Disculpeu les molèsties",
     projectText: "Una col·lecció de fotografies de diferents ciutats unides per la bellesa dels vidres trencats. Ja sigui en espais públics o privats, les formes caleidoscòpiques ens recorden a una teranyina d'aranya, i com si fóssim nosaltres l'insecte, ens atrapen captivats per la seva forma i patrons."
   },
   en: {
-    warningMain: "FAULTY",
+    warningMain: "OUT OF ORDER",
     warningSub: "Sorry for the inconvenience",
     projectText: "A collection of photographs from different cities united by the beauty of broken glass. Whether in public or private spaces, the kaleidoscopic shapes recall a spider's web, and as if we were the insect, they trap us, captivated by their form and patterns."
   }
