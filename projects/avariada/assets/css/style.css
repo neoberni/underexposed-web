@@ -32,9 +32,9 @@
   --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 
-  --bg-img-1: url("https://neoberni.github.io/web-assets/DSC00824.JPG");
-  --bg-img-2: url("https://neoberni.github.io/web-assets/DSC03924.JPG");
-  --bg-img-3: url("https://neoberni.github.io/web-assets/DSC00980.JPG");
+  --bg-img-1: url(projects\avariada\assets\images\DSC00824.JPG);
+  --bg-img-2: url(projects\avariada\assets\images\DSC05061.JPG);
+  --bg-img-3: url(projects\avariada\assets\images\DSC04774.JPG);
 }
 
 *,
