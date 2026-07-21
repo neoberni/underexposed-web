@@ -34,7 +34,7 @@
   --transition-slow: 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Imatge de fons del hero — arxiu dins projects/avariada/assets/images/ */
-  --bg-img-1: url("images/DSC00824.JPG");
+  --bg-img-1: url("../images/DSC00824.JPG");
 
   /* Variables del header (copiades de la pagina principal) */
   --header-ink: rgba(243, 238, 230, 0.48);
