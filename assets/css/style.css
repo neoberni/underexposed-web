@@ -1399,7 +1399,8 @@ main {
    ============================================================ */
 @media (max-width: 767px) {
   :root {
-    --bg: #131313; /* gris molt fosc, una mica més fosc */
+    --bg: #131313;
+    --about-band-top: calc(var(--header-height) + 1rem); /* ↓ espai abans de "Sobre mi" */
   }
 
   .bg-base {
@@ -1411,25 +1412,26 @@ main {
     display: none;
   }
 
-  /* header: només logo + toggle idioma */
-  .symbol-box,
+  /* header: logo de símbols + logo text + toggle idioma (sense nav) */
   .nav-toggle,
   .nav {
     display: none;
   }
 
   .header-inner {
-    padding-left: 1rem;
+    padding-left: calc(var(--symbol-size) + 0.6rem);
   }
 
   .header-right {
     margin-left: auto;
   }
 
-  /* logo + text inicial: mateix punt d'inici, un a sobre i l'altre a sota */
+  /* alçada del hero reduïda perquè "Sobre mi" quedi més amunt */
   .hero {
+    min-height: auto;
     align-items: flex-start;
-    padding-top: calc(var(--header-height) + 3.25rem);
+    padding-top: calc(var(--header-height) + 2rem); /* ← LÍNIA A: mou el bloc logo+text amunt/avall */
+    padding-bottom: 1rem;
   }
 
   .hero-column {
@@ -1437,7 +1439,7 @@ main {
   }
 
   .hero-logo {
-    margin: 0 0 0.85rem 0;
+    margin: 0 0 0.6rem 0; /* ← LÍNIA B: 1r valor=dalt, 4t valor=esquerra, 2n=dreta, 3r=espai fins al text */
   }
 
   .hero-text-column,
@@ -1445,4 +1447,3 @@ main {
     text-align: left;
     margin-left: 0;
   }
-}
