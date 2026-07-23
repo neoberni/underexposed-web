@@ -3,6 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>underexposed</title>
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -32,7 +33,20 @@
       </div>
 
       <div class="header-right">
-        <nav class="nav" aria-label="Primary navigation">
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-label="Obrir menú"
+          aria-expanded="false"
+          aria-controls="siteNav"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Primary navigation">
           <div class="nav-links">
             <a href="#about" class="nav-link"><span data-i18n="nav.about">About Me</span></a>
             <a href="#work" class="nav-link"><span data-i18n="nav.work">Selected Work</span></a>
