@@ -3,7 +3,7 @@ const translations = {
     projectText: "Projecte de fotografia enfocat a l'escena musical, tant a Barcelona com a altres països. Alguns dels seguents artistes són Harto Falion, The Cure, Rooster, Garett Caramel, siempresolo, una1ka, Pedro Ladroga i Moodymann, d'entre altres."
   },
   en: {
-    projectText: "[Nightgoer project text — pending.]"
+    projectText: "A photography project focused on the music scene, both in Barcelona and abroad. Featured artists include Harto Falion, The Cure, Rooster, Garett Caramel, siempresolo, una1ka, Pedro Ladroga, and Moodymann, among others."
   }
 };
 
