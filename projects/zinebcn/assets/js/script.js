@@ -414,7 +414,7 @@ const pageFlipSuperior = new St.PageFlip(document.getElementById('book-superior'
     maxHeight: 1560,
     maxShadowOpacity: 0.5,
     showCover: true,
-    mobileScrollSupport: false,
+    mobileScrollSupport: true,
     usePortrait: true
 });
 pageFlipSuperior.loadFromHTML(document.querySelectorAll('#book-superior .page'));
@@ -429,16 +429,7 @@ const pageFlipInferior = new St.PageFlip(document.getElementById('book-inferior'
     maxHeight: 1560,
     maxShadowOpacity: 0.5,
     showCover: true,
-    mobileScrollSupport: false,
+    mobileScrollSupport: true,
     usePortrait: true
 });
 pageFlipInferior.loadFromHTML(document.querySelectorAll('#book-inferior .page'));
-// ADDICIÓ MÒBIL — injecta el viewport si no existeix
-(function ensureViewportMeta() {
-  if (!document.querySelector('meta[name="viewport"]')) {
-    const meta = document.createElement('meta');
-    meta.name = "viewport";
-    meta.content = "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover";
-    document.head.appendChild(meta);
-  }
-})();

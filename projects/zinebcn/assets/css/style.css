@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 :root {
-  --bg: #050505;
+  --bg: #1c1c1c;
   --text: #f3eee6;
   --text-muted: rgba(243, 238, 230, 0.72);
   --text-soft: rgba(243, 238, 230, 0.58);
@@ -512,8 +512,10 @@ main {
     gap: 3.5rem;
   }
 }
+
 /* ============================================================
-   AFEGITS RESPONSIVE MÒBIL — ###BCN (només additiu)
+   AFEGITS RESPONSIVE MÒBIL — ###BCN (només additiu, no toca res
+   de dalt)
    ============================================================ */
 @media (max-width: 900px) {
   :root {
@@ -542,34 +544,45 @@ main {
   .zine-hero__title {
     font-size: clamp(2.6rem, 14vw, 4rem);
   }
-
-  .zine-hero__text {
-    font-size: 1.02rem;
-    text-align: left;
-  }
 }
 
 @media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  .zine-hero {
+    min-height: auto;
+    padding: calc(var(--header-height) + 1rem) 0 0.75rem;
+  }
+
+  .zine-hero__text {
+    margin-top: 0.6rem;
+    text-align: left;
+  }
+
   .zine-section {
-    padding: 0.5rem 0 4rem;
+    padding: 0.25rem 0 3rem;
   }
 
   .zine-stack {
     width: min(100% - 0.75rem, 1500px);
-    gap: 3rem;
-  }
-
-  .zine-block__label {
-    font-size: 0.72rem;
+    gap: 2.5rem;
   }
 
   .zine-wrapper {
     max-width: 100%;
+    max-height: 68dvh;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
   }
 
-  .book,
-  .book * {
-    touch-action: pan-y;
+  .book {
+    max-width: 100%;
+    max-height: 68dvh;
   }
 }
