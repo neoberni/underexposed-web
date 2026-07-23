@@ -34,7 +34,7 @@
   --transition-slow: 1100ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* CANVI: imatge de fons del hero pròpia de nightgoer */
-  --bg-img-1: url("../images/DSC05752.jpg");
+  --bg-img-1: url("../images/DSC05752.webp");
 
   --header-ink: rgba(243, 238, 230, 0.48);
   --header-ink-hover: rgba(243, 238, 230, 0.96);
