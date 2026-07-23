@@ -519,12 +519,12 @@ main {
    ============================================================ */
 @media (max-width: 900px) {
   :root {
-    --header-height: 4.4rem;
-    --symbol-size: 4.4rem;
+    --header-height: 3.34rem;
+    --symbol-size: 3.34rem;
   }
 
   .symbol-box__char {
-    font-size: 2.1rem;
+    font-size: 1.7rem;
   }
 
   .header-inner {
