@@ -567,3 +567,49 @@ if (languageToggle) {
 }
 
 applyLanguage("ca");
+
+// ============================================================
+// MOBILE ADDITIONS — afegit, no modifica res de l'existent
+// ============================================================
+(function setupMobileWorkCarousel() {
+  function init() {
+    if (!isMobile()) return;
+
+    const workLayout = document.querySelector(".work-layout");
+    if (!workLayout || workLayout.dataset.mobileCarouselInit) return;
+
+    const slides = Array.from(workLayout.children);
+    if (slides.length <= 1) return;
+
+    workLayout.dataset.mobileCarouselInit = "true";
+
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "work-carousel-dots";
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "work-carousel-dots__dot";
+      if (i === 0) dot.classList.add("is-active");
+      dotsWrap.appendChild(dot);
+    });
+
+    workLayout.insertAdjacentElement("afterend", dotsWrap);
+
+    const dots = Array.from(dotsWrap.children);
+    let ticking = false;
+
+    workLayout.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const index = Math.round(workLayout.scrollLeft / workLayout.clientWidth);
+        dots.forEach((d, i) => d.classList.toggle("is-active", i === index));
+        ticking = false;
+      });
+    });
+  }
+
+  window.addEventListener("load", init);
+  window.addEventListener("resize", () => {
+    setTimeout(init, 150);
+  });
+})();
