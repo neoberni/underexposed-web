@@ -1447,3 +1447,15 @@ main {
     text-align: left;
     margin-left: 0;
   }
+   .about-photo {
+    display: none;
+  }
+
+  /* reduir l'espai entre el text sota el logo i la secció "Sobre mi" */
+  .section--about {
+    padding-top: 0.5rem; /* ← redueix aquest valor si vols encara menys espai */
+  }
+
+  .hero {
+    padding-bottom: 0; /* elimina l'espai extra que quedava sota el text */
+  }
