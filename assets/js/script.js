@@ -2,9 +2,6 @@ const root = document.documentElement;
 const canvas = document.getElementById("asciiField");
 const ctx = canvas.getContext("2d");
 
-const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
-const isTouch = () => window.matchMedia("(hover: none), (pointer: coarse)").matches;
-
 let dpr = 1;
 let cell = 18;
 let cols = 0;
@@ -17,7 +14,6 @@ let serpents = [];
 let lastTime = 0;
 let phase = 0;
 let lastMeasuredHeight = 0;
-let rafId = null;
 
 const pointer = {
   x: window.innerWidth * 0.5,
@@ -251,32 +247,19 @@ function dustChar(value) {
   return ";";
 }
 
-// On touch devices there is no pointer, and we render the field once as a
-// static backdrop instead of animating every frame (cheaper + matches the
-// "static ASCII background" behaviour requested for mobile).
-const STATIC_MODE = isTouch() || isMobile();
-const staticAlphaBoost = STATIC_MODE ? 1.6 : 1;
-
 function drawTrace(seg) {
   const px = seg.x * cell + cell * 0.5;
   const py = seg.y * cell + cell * 0.5;
 
-  let influence = 0;
-  let offsetX = 0;
-  let offsetY = 0;
-  let pulse = 0.5;
+  const dx = pointer.x - px;
+  const dy = (pointer.y + window.scrollY) - py;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  const influence = pointer.active ? Math.max(0, 1 - dist / 135) : 0;
+  const safeDist = Math.max(dist, 0.0001);
 
-  if (!STATIC_MODE) {
-    const dx = pointer.x - px;
-    const dy = (pointer.y + window.scrollY) - py;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    influence = pointer.active ? Math.max(0, 1 - dist / 135) : 0;
-    const safeDist = Math.max(dist, 0.0001);
-
-    pulse = (Math.sin(phase * 0.85 + seg.seed * 14) + 1) * 0.5;
-    offsetX = influence > 0 ? -(dx / safeDist) * 2.6 * influence : 0;
-    offsetY = influence > 0 ? -(dy / safeDist) * 4.1 * influence : 0;
-  }
+  const pulse = (Math.sin(phase * 0.85 + seg.seed * 14) + 1) * 0.5;
+  const offsetX = influence > 0 ? -(dx / safeDist) * 2.6 * influence : 0;
+  const offsetY = influence > 0 ? -(dy / safeDist) * 4.1 * influence : 0;
 
   let alpha = 0.08 * seg.weight;
   if (seg.dir === "down") alpha = 0.17 * seg.weight;
@@ -285,7 +268,6 @@ function drawTrace(seg) {
 
   alpha += pulse * 0.03;
   alpha += influence * 0.3;
-  alpha *= staticAlphaBoost;
 
   ctx.font = `${window.innerWidth < 768 ? "normal 12.5px monospace" : "normal 13.5px monospace"}`;
   ctx.fillStyle = `rgba(243, 238, 230, ${alpha})`;
@@ -296,24 +278,17 @@ function drawSerpent(seg) {
   const px = seg.x * cell + cell * 0.5;
   const py = seg.y * cell + cell * 0.5;
 
-  let influence = 0;
-  let offsetX = 0;
-  let offsetY = 0;
-  let pulse = 0.5;
+  const dx = pointer.x - px;
+  const dy = (pointer.y + window.scrollY) - py;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  const influence = pointer.active ? Math.max(0, 1 - dist / 165) : 0;
+  const safeDist = Math.max(dist, 0.0001);
 
-  if (!STATIC_MODE) {
-    const dx = pointer.x - px;
-    const dy = (pointer.y + window.scrollY) - py;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    influence = pointer.active ? Math.max(0, 1 - dist / 165) : 0;
-    const safeDist = Math.max(dist, 0.0001);
+  const pulse = (Math.sin(phase * 0.7 + seg.seed * 10) + 1) * 0.5;
+  const offsetX = influence > 0 ? -(dx / safeDist) * 3.1 * influence : 0;
+  const offsetY = influence > 0 ? -(dy / safeDist) * 4.8 * influence : 0;
 
-    pulse = (Math.sin(phase * 0.7 + seg.seed * 10) + 1) * 0.5;
-    offsetX = influence > 0 ? -(dx / safeDist) * 3.1 * influence : 0;
-    offsetY = influence > 0 ? -(dy / safeDist) * 4.8 * influence : 0;
-  }
-
-  const alpha = (0.21 + pulse * 0.04 + influence * 0.35) * staticAlphaBoost;
+  const alpha = 0.21 + pulse * 0.04 + influence * 0.35;
 
   ctx.font = `${window.innerWidth < 768 ? "normal 700 13px monospace" : "normal 700 15px monospace"}`;
   ctx.fillStyle = `rgba(243, 238, 230, ${alpha})`;
@@ -324,29 +299,21 @@ function drawDust(item) {
   const px = item.x * cell + cell * 0.5;
   const py = item.y * cell + cell * 0.5;
 
-  let influence = 0;
-  let offsetX = 0;
-  let offsetY = 0;
-  let wave = 0.5;
+  const dx = pointer.x - px;
+  const dy = (pointer.y + window.scrollY) - py;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+  const influence = pointer.active ? Math.max(0, 1 - dist / 150) : 0;
+  const safeDist = Math.max(dist, 0.0001);
 
-  if (!STATIC_MODE) {
-    const dx = pointer.x - px;
-    const dy = (pointer.y + window.scrollY) - py;
-    const dist = Math.sqrt(dx * dx + dy * dy);
-    influence = pointer.active ? Math.max(0, 1 - dist / 150) : 0;
-    const safeDist = Math.max(dist, 0.0001);
-
-    wave = (Math.sin(phase * item.speed + item.seed * 12) + 1) * 0.5;
-    offsetX = influence > 0 ? -(dx / safeDist) * 1.2 * influence : 0;
-    offsetY = influence > 0 ? -(dy / safeDist) * 2.1 * influence : 0;
-  }
-
+  const wave = (Math.sin(phase * item.speed + item.seed * 12) + 1) * 0.5;
   const value = Math.min(1, item.bias * 0.18 + wave * 0.7 + influence * 0.95);
   const char = dustChar(value);
 
+  const offsetX = influence > 0 ? -(dx / safeDist) * 1.2 * influence : 0;
+  const offsetY = influence > 0 ? -(dy / safeDist) * 2.1 * influence : 0;
+
   let alpha = 0.008 + value * 0.06;
   alpha += influence * 0.11;
-  alpha *= staticAlphaBoost;
 
   ctx.font = `${window.innerWidth < 768 ? "normal 12px monospace" : "normal 13px monospace"}`;
   ctx.fillStyle = `rgba(243, 238, 230, ${alpha})`;
@@ -357,11 +324,16 @@ function maybeGrowCanvas() {
   const currentHeight = getDocumentHeight();
   if (currentHeight !== lastMeasuredHeight) {
     resizeCanvas(true);
-    if (STATIC_MODE) drawFrame();
   }
 }
 
-function drawFrame() {
+function render(now = 0) {
+  const delta = Math.min(0.05, (now - lastTime) / 1000 || 0.016);
+  lastTime = now;
+  phase += delta * 1.45;
+
+  maybeGrowCanvas();
+
   ctx.clearRect(0, 0, pageWidth, pageHeight);
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
@@ -373,21 +345,11 @@ function drawFrame() {
   for (let i = 0; i < serpents.length; i++) {
     for (let j = 0; j < serpents[i].length; j++) drawSerpent(serpents[i][j]);
   }
-}
 
-function render(now = 0) {
-  const delta = Math.min(0.05, (now - lastTime) / 1000 || 0.016);
-  lastTime = now;
-  phase += delta * 1.45;
-
-  maybeGrowCanvas();
-  drawFrame();
-
-  rafId = requestAnimationFrame(render);
+  requestAnimationFrame(render);
 }
 
 window.addEventListener("mousemove", (e) => {
-  if (STATIC_MODE) return;
   pointer.x = e.clientX;
   pointer.y = e.clientY;
   pointer.active = true;
@@ -398,29 +360,12 @@ window.addEventListener("mouseleave", () => {
   pointer.active = false;
 });
 
-let resizeTimer = null;
-window.addEventListener("resize", () => {
-  clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => {
-    resizeCanvas(true);
-    if (STATIC_MODE) drawFrame();
-  }, 120);
-});
-
-window.addEventListener("load", () => {
-  resizeCanvas(true);
-  if (STATIC_MODE) drawFrame();
-});
+window.addEventListener("resize", () => resizeCanvas(true));
+window.addEventListener("load", () => resizeCanvas(true));
 
 updateCrosshair(pointer.x, pointer.y);
 resizeCanvas(true);
-
-if (STATIC_MODE) {
-  // Static ASCII backdrop: draw once, no animation loop, no mouse tracking.
-  drawFrame();
-} else {
-  requestAnimationFrame(render);
-}
+requestAnimationFrame(render);
 
 const headerSymbol = document.getElementById("headerSymbol");
 
@@ -441,30 +386,6 @@ if (headerSymbol) {
   };
 
   setInterval(setNextSymbol, 820);
-}
-
-// --- Mobile nav (hamburger) ---
-const navToggle = document.getElementById("navToggle");
-const siteNav = document.getElementById("siteNav");
-
-if (navToggle && siteNav) {
-  const closeNav = () => {
-    siteNav.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
-  };
-
-  navToggle.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  });
-
-  siteNav.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", closeNav);
-  });
-
-  window.addEventListener("resize", () => {
-    if (!isMobile()) closeNav();
-  });
 }
 
 const translations = {
