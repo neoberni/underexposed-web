@@ -1394,20 +1394,18 @@ main {
     transition: none;
   }
 }
-
 /* ============================================================
    MOBILE ENHANCEMENTS — afegit, no modifica res de l'existent
    ============================================================ */
 @media (max-width: 767px) {
   :root {
-    --bg: #1b1b1b; /* gris molt fosc bàsic */
+    --bg: #131313; /* gris molt fosc, una mica més fosc */
   }
 
   .bg-base {
-    background: #1b1b1b;
+    background: #131313;
   }
 
-  /* fons pla, sense textura ascii ni soroll */
   .ascii-field,
   .noise {
     display: none;
@@ -1428,85 +1426,23 @@ main {
     margin-left: auto;
   }
 
-  /* logo + text inicial: una mica més avall i alineats a l'esquerra */
+  /* logo + text inicial: mateix punt d'inici, un a sobre i l'altre a sota */
   .hero {
     align-items: flex-start;
     padding-top: calc(var(--header-height) + 3.25rem);
   }
 
   .hero-column {
-    text-align: left;
-  }
-
-  .hero-logo {
     margin-left: 0;
   }
 
-  .hero-text-column {
-    text-align: left;
+  .hero-logo {
+    margin: 0 0 0.85rem 0;
   }
 
+  .hero-text-column,
   .lede {
     text-align: left;
+    margin-left: 0;
   }
-
-  /* Selected Work: un projecte per pantalla, swipe horitzontal */
-  .work-band {
-    padding-bottom: 1.5rem;
-  }
-
-  .work-layout {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding: 0 1rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .work-layout::-webkit-scrollbar {
-    display: none;
-  }
-
-  .work-layout > * {
-    flex: 0 0 100%;
-    max-width: 100%;
-    scroll-snap-align: center;
-    transform: none;
-  }
-
-  .work-intro-panel {
-    min-height: 13.2rem;
-  }
-
-  .work-card {
-    min-height: auto;
-  }
-
-  .work-carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.4rem;
-    margin-top: 0.75rem;
-  }
-
-  .work-carousel-dots__dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.25);
-    transition: background-color 180ms ease, transform 180ms ease;
-  }
-
-  .work-carousel-dots__dot.is-active {
-    background: rgba(255, 255, 255, 0.9);
-    transform: scale(1.2);
-  }
-}
-
-/* els punts del carrusel només han d'existir en mòbil */
-.work-carousel-dots {
-  display: none;
 }
