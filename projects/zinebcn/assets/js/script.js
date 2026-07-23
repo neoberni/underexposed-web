@@ -433,3 +433,12 @@ const pageFlipInferior = new St.PageFlip(document.getElementById('book-inferior'
     usePortrait: true
 });
 pageFlipInferior.loadFromHTML(document.querySelectorAll('#book-inferior .page'));
+// ADDICIÓ MÒBIL — injecta el viewport si no existeix
+(function ensureViewportMeta() {
+  if (!document.querySelector('meta[name="viewport"]')) {
+    const meta = document.createElement('meta');
+    meta.name = "viewport";
+    meta.content = "width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover";
+    document.head.appendChild(meta);
+  }
+})();

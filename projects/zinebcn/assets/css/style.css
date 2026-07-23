@@ -512,3 +512,64 @@ main {
     gap: 3.5rem;
   }
 }
+/* ============================================================
+   AFEGITS RESPONSIVE MÒBIL — ###BCN (només additiu)
+   ============================================================ */
+@media (max-width: 900px) {
+  :root {
+    --header-height: 4.4rem;
+    --symbol-size: 4.4rem;
+  }
+
+  .symbol-box__char {
+    font-size: 2.1rem;
+  }
+
+  .header-inner {
+    padding-left: calc(var(--symbol-size) + 0.9rem);
+    padding-right: 1.1rem;
+  }
+
+  .brand span {
+    font-size: 1.05rem;
+  }
+
+  .nav-link span,
+  .lang-toggle__button {
+    font-size: 1rem;
+  }
+
+  .zine-hero__title {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .zine-hero__text {
+    font-size: 1.02rem;
+    text-align: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .zine-section {
+    padding: 0.5rem 0 4rem;
+  }
+
+  .zine-stack {
+    width: min(100% - 0.75rem, 1500px);
+    gap: 3rem;
+  }
+
+  .zine-block__label {
+    font-size: 0.72rem;
+  }
+
+  .zine-wrapper {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .book,
+  .book * {
+    touch-action: pan-y;
+  }
+}
