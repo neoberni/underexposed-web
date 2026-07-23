@@ -3,6 +3,7 @@
 
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>underexposed</title>
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -32,7 +33,20 @@
       </div>
 
       <div class="header-right">
-        <nav class="nav" aria-label="Primary navigation">
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-label="Obrir menú"
+          aria-expanded="false"
+          aria-controls="siteNav"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="nav" id="siteNav" aria-label="Primary navigation">
           <div class="nav-links">
             <a href="#about" class="nav-link"><span data-i18n="nav.about">About Me</span></a>
             <a href="#work" class="nav-link"><span data-i18n="nav.work">Selected Work</span></a>
@@ -175,7 +189,7 @@
 
         <article class="work-card work-panel work-card--step-2">
           <header class="work-card__head">
-            <h3 class="work-card__title">###bcn</h3>
+            <h3 class="work-card__title">###BCN</h3>
           </header>
 
           <a
@@ -211,27 +225,33 @@
 
         <article class="work-card work-panel work-card--step-3">
           <header class="work-card__head">
-            <h3 class="work-card__title">TFG</h3>
+            <h3 class="work-card__title">Night-Goer</h3>
           </header>
 
           <a
-            class="work-card__image-link work-card__image-link--placeholder"
-            href="#"
-            data-project-url="PENDENT_TFG_URL"
-            data-i18n-aria-label="work.projectTfgAria"
-            aria-label="Projecte TFG pendent"
+            class="work-card__image-link"
+            href="projects/nightgoer/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Obrir projecte Night-Goer"
           >
-            <div class="work-card__media work-card__placeholder work-card__placeholder--tfg">
-              <span class="work-card__placeholder-label">TFG / PLACEHOLDER</span>
+            <div class="work-card__media">
+              <img
+                class="work-card__image"
+                src="assets/images/portadanightgoer.webp"
+                alt="Imatge del projecte Night-Goer"
+                loading="lazy"
+                decoding="async"
+              >
             </div>
           </a>
 
           <footer class="work-card__foot">
             <a
-              href="#"
-              data-project-url="PENDENT_TFG_URL"
-              class="work-card__link work-card__link--pending"
-              aria-disabled="true"
+              href="projects/nightgoer/index.html"
+              class="work-card__link"
+              target="_self"
+              rel="noopener noreferrer"
               data-i18n="work.openProject"
             >
               Obrir projecte
@@ -241,7 +261,7 @@
 
         <article class="work-card work-panel work-card--step-4">
           <header class="work-card__head">
-            <h3 class="work-card__title">La Internationale</h3>
+            <h3 class="work-card__title">Darkwave</h3>
           </header>
 
           <a
@@ -249,10 +269,10 @@
             href="#"
             data-project-url="PENDENT_LA_INTERNATIONALE_URL"
             data-i18n-aria-label="work.projectInternationaleAria"
-            aria-label="Projecte La Internationale pendent"
+            aria-label="Projecte Darkwave pendent"
           >
             <div class="work-card__media work-card__placeholder work-card__placeholder--internationale">
-              <span class="work-card__placeholder-label">LA INTERNATIONALE / PLACEHOLDER</span>
+              <span class="work-card__placeholder-label">DARKWAVE / PLACEHOLDER</span>
             </div>
           </a>
 
@@ -271,18 +291,46 @@
 
         <article class="work-card work-panel work-card--step-1">
           <header class="work-card__head">
-            <h3 class="work-card__title">###bcn</h3>
+            <h3 class="work-card__title">TBD</h3>
+          </header>
+
+          <a
+            class="work-card__image-link work-card__image-link--placeholder"
+            href="#"
+            data-project-url="PENDENT_TFG_URL"
+            aria-label="Projecte pendent"
+          >
+            <div class="work-card__media work-card__placeholder work-card__placeholder--tfg">
+              <span class="work-card__placeholder-label">TBD</span>
+            </div>
+          </a>
+
+          <footer class="work-card__foot">
+            <a
+              href="#"
+              data-project-url="PENDENT_TFG_URL"
+              class="work-card__link work-card__link--pending"
+              aria-disabled="true"
+              data-i18n="work.openProject"
+            >
+              Obrir projecte
+            </a>
+          </footer>
+        </article>
+
+        <article class="work-card work-panel work-card--step-2">
+          <header class="work-card__head">
+            <h3 class="work-card__title">TBD</h3>
           </header>
 
           <a
             class="work-card__image-link work-card__image-link--placeholder"
             href="#"
             data-project-url="PENDENT_HASHBCN_URL"
-            data-i18n-aria-label="work.projectHashbcnAria"
-            aria-label="Projecte ###bcn pendent"
+            aria-label="Projecte pendent"
           >
             <div class="work-card__media work-card__placeholder work-card__placeholder--hashbcn">
-              <span class="work-card__placeholder-label">###BCN / PLACEHOLDER</span>
+              <span class="work-card__placeholder-label">TBD</span>
             </div>
           </a>
 
@@ -299,50 +347,19 @@
           </footer>
         </article>
 
-        <article class="work-card work-panel work-card--step-2">
-          <header class="work-card__head">
-            <h3 class="work-card__title">Nightgoer</h3>
-          </header>
-
-          <a
-            class="work-card__image-link work-card__image-link--placeholder"
-            href="#"
-            data-project-url="PENDENT_NIGHTGOER_URL"
-            data-i18n-aria-label="work.projectNightgoerAria"
-            aria-label="Projecte Nightgoer pendent"
-          >
-            <div class="work-card__media work-card__placeholder work-card__placeholder--nightgoer">
-              <span class="work-card__placeholder-label">NIGHTGOER / PLACEHOLDER</span>
-            </div>
-          </a>
-
-          <footer class="work-card__foot">
-            <a
-              href="#"
-              data-project-url="PENDENT_NIGHTGOER_URL"
-              class="work-card__link work-card__link--pending"
-              aria-disabled="true"
-              data-i18n="work.openProject"
-            >
-              Obrir projecte
-            </a>
-          </footer>
-        </article>
-
         <article class="work-card work-panel work-card--step-3">
           <header class="work-card__head">
-            <h3 class="work-card__title">Render Works</h3>
+            <h3 class="work-card__title">TBD</h3>
           </header>
 
           <a
             class="work-card__image-link work-card__image-link--placeholder"
             href="#"
             data-project-url="PENDENT_RENDER_WORKS_URL"
-            data-i18n-aria-label="work.projectRenderWorksAria"
-            aria-label="Projecte Render Works pendent"
+            aria-label="Projecte pendent"
           >
             <div class="work-card__media work-card__placeholder work-card__placeholder--renderworks">
-              <span class="work-card__placeholder-label">RENDER WORKS / PLACEHOLDER</span>
+              <span class="work-card__placeholder-label">TBD</span>
             </div>
           </a>
 
@@ -361,18 +378,17 @@
 
         <article class="work-card work-panel work-card--step-4">
           <header class="work-card__head">
-            <h3 class="work-card__title">Main Shootings</h3>
+            <h3 class="work-card__title">TBD</h3>
           </header>
 
           <a
             class="work-card__image-link work-card__image-link--placeholder"
             href="#"
             data-project-url="PENDENT_MAIN_SHOOTINGS_URL"
-            data-i18n-aria-label="work.projectMainShootingsAria"
-            aria-label="Projecte Main Shootings pendent"
+            aria-label="Projecte pendent"
           >
             <div class="work-card__media work-card__placeholder work-card__placeholder--mainshootings">
-              <span class="work-card__placeholder-label">MAIN SHOOTINGS / PLACEHOLDER</span>
+              <span class="work-card__placeholder-label">TBD</span>
             </div>
           </a>
 
@@ -380,6 +396,35 @@
             <a
               href="#"
               data-project-url="PENDENT_MAIN_SHOOTINGS_URL"
+              class="work-card__link work-card__link--pending"
+              aria-disabled="true"
+              data-i18n="work.openProject"
+            >
+              Obrir projecte
+            </a>
+          </footer>
+        </article>
+
+        <article class="work-card work-panel work-card--step-5">
+          <header class="work-card__head">
+            <h3 class="work-card__title">TBD</h3>
+          </header>
+
+          <a
+            class="work-card__image-link work-card__image-link--placeholder"
+            href="#"
+            data-project-url="PENDENT_EXTRA_URL"
+            aria-label="Projecte pendent"
+          >
+            <div class="work-card__media work-card__placeholder work-card__placeholder--extra">
+              <span class="work-card__placeholder-label">TBD</span>
+            </div>
+          </a>
+
+          <footer class="work-card__foot">
+            <a
+              href="#"
+              data-project-url="PENDENT_EXTRA_URL"
               class="work-card__link work-card__link--pending"
               aria-disabled="true"
               data-i18n="work.openProject"
