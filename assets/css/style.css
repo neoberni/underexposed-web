@@ -602,6 +602,11 @@ main {
   text-wrap: pretty;
 }
 
+/* Mobile-only hero image (below the intro text). Hidden on desktop/tablet by default. */
+.hero-mobile-image {
+  display: none;
+}
+
 .section--about {
   position: relative;
   min-height: auto;
@@ -1038,17 +1043,19 @@ main {
 }
 
 .contact-item__label {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  width: 100%;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  text-align: center;
   color: rgba(255, 255, 255, 0.42);
 }
 
 .contact-item__text {
+  display: block;
+  width: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: clamp(1.12rem, 1.02rem + 0.3vw, 1.38rem);
   font-weight: 400;
@@ -1105,6 +1112,11 @@ main {
   .hero,
   .section {
     min-height: 100svh;
+  }
+
+  .section--about,
+  .section--contact {
+    min-height: auto;
   }
 
   .about-inner {
@@ -1247,6 +1259,22 @@ main {
   .lede {
     font-size: 1rem;
     text-align: left;
+  }
+
+  /* --- mobile-only image below the intro text --- */
+  .hero-mobile-image {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-5);
+  }
+
+  .hero-mobile-image__img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
   }
 
   /* --- about: stack title / photo / copy, no fixed-height band --- */
@@ -1459,3 +1487,21 @@ main {
   .hero {
     padding-bottom: 0; /* elimina l'espai extra que quedava sota el text */
   }
+
+  /* imatge mòbil sota el text inicial: mateixa amplada que les targetes,
+     mai més ampla que la pantalla */
+  .hero-mobile-image {
+    display: block;
+    width: 100%;
+    margin: 0.9rem 0 0;
+  }
+
+  .hero-mobile-image__img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}

@@ -6,7 +6,7 @@
   --text-faint: rgba(244, 239, 231, 0.4);
   --line: rgba(255,255,255,.08);
   --warning-red: rgba(183, 21, 0, 1);
-  --warning-red-text: #140605;
+  --warning-red-text: #060606;
 
   --space-1: .25rem;
   --space-2: .5rem;
@@ -380,7 +380,7 @@ main {
   width: 100%;
   font-size: clamp(1.02rem, .98rem + .22vw, 1.18rem);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 520;
   text-transform: none;
   letter-spacing: 0;
   line-height: 1.15;
