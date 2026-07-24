@@ -471,3 +471,15 @@ main {
     transform: none;
   }
 }
+.hero-mobile-photo {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .hero-mobile-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-top: var(--space-4);
+  }
+}
